@@ -1,9 +1,7 @@
 package com.superior.dev.backend.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,10 +10,14 @@ import java.util.Objects;
 @Getter
 @Setter
 @AllArgsConstructor
+@Entity
+@Table(name = "tb_category")
 public class Category implements Serializable {
 
     private static Long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
@@ -30,7 +32,6 @@ public class Category implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name);
     }
 }

@@ -1,6 +1,8 @@
 package com.superior.dev.backend.resources;
 
 import com.superior.dev.backend.entities.Category;
+import com.superior.dev.backend.services.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +15,13 @@ import java.util.List;
 @RequestMapping(value = "/categories")
 public class CategoryResource {
 
+    @Autowired
+    private CategoryService service;
     @GetMapping()
-    public ResponseEntity<List<Category>>  findAll()
+    public ResponseEntity<List<Category>> findAll()
     {
-        Category category = new Category(1L, "Books");
+        List<Category> list = service.findAll();
 
-        Category other = new Category(2L, "Electronics");
-
-        return ResponseEntity.ok(Arrays.asList(category,other));
+        return ResponseEntity.ok().body(list);
     }
 }
