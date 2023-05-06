@@ -14,7 +14,7 @@ import java.util.Objects;
 @Table(name = "tb_category")
 public class Category implements Serializable {
 
-    private static Long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

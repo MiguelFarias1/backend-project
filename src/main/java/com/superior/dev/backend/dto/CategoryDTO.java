@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 public class CategoryDTO implements Serializable {
 
-    private static Long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
 
