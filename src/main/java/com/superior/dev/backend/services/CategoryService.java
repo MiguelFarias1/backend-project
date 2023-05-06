@@ -1,5 +1,6 @@
 package com.superior.dev.backend.services;
 
+import com.superior.dev.backend.dto.CategoryDTO;
 import com.superior.dev.backend.entities.Category;
 import com.superior.dev.backend.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,10 @@ public class CategoryService {
     private CategoryRepository repository;
 
     @Transactional(readOnly = true)
-    public List<Category> findAll() {
-        return repository.findAll();
+    public List<CategoryDTO> findAll() {
+
+        List<Category> list = repository.findAll();
+
+        return list.stream().map(CategoryDTO::new).toList();
     }
 }
