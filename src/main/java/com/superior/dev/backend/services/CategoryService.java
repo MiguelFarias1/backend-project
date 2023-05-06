@@ -34,4 +34,15 @@ public class CategoryService {
                 () -> new CategoryNotFoundException("Categoria não encontrada !")
         );
     }
+
+    @Transactional
+    public CategoryDTO insert(CategoryDTO category) {
+        Category element = new Category();
+
+        element.setName(category.getName());
+
+        element = repository.save(element);
+
+        return new CategoryDTO(element);
+    }
 }
